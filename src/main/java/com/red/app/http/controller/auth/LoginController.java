@@ -97,8 +97,9 @@ public class LoginController {
 		return "redirect:" + redirectTo;
 	}
 
-	protected void loggedOut(User users)
+	protected void loggedOut(User user)
 	{
+		System.out.println(user);
 		//
 	}
 }

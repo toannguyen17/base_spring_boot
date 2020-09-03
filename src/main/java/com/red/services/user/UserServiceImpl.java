@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
-	private static final int MAX_ATTEMPTS = 2;
+	private static final int MAX_ATTEMPTS = 6;
 
 	@Autowired
 	private UsersRepository repository;

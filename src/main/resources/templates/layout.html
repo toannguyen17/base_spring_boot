@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<th:block th:fragment="head_type">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,15 +11,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 	</th:block>
 
+
 	<meta name="_csrf" th:content="${_csrf.token}"/>
 	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 
-	<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">C0320H1</title>
+	<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">RedT</title>
 
 	<th:block th:fragment="bootstrap">
 		<link rel="shortcut icon" href="/favicon.png" />
 		<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
-		<script src="/webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/assets/lib/popper-1.16.1/popper.min.js}"></script>
 		<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 		<script th:src="@{//cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js}"></script>

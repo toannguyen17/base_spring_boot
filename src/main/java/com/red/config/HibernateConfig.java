@@ -19,6 +19,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
+@EnableTransactionManagement
 public class HibernateConfig {
     @Autowired
     private Environment env;
@@ -52,6 +53,7 @@ public class HibernateConfig {
         String password = env.getProperty("DB_PASSWORD");
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        assert drive != null;
         dataSource.setDriverClassName(drive);
         dataSource.setUrl(url);
         dataSource.setUsername(username);
