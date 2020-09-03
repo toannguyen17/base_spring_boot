@@ -1,5 +1,6 @@
 package com.red.config;
 
+import com.red.app.handler.auth.CustomAuthenticationSuccessHandler;
 import com.red.app.provider.CustomDaoAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.access.AccessDeniedHandlerImpl;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -65,6 +67,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return authProvider;
     }
 
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler(){
+        return new CustomAuthenticationSuccessHandler();
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
@@ -88,6 +95,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login").usernameParameter("email").passwordParameter("password").permitAll()
                 .loginProcessingUrl("/login")
                 .failureForwardUrl("/login")
+                .successHandler(authenticationSuccessHandler())
                 .and()
 //            .logout()
 //                .invalidateHttpSession(true)

@@ -77,4 +77,8 @@ public class UserDetailCustom implements UserDetails {
     public User getUserDetails() {
         return user;
     }
+
+    public User getUser() {
+        return user;
+    }
 }

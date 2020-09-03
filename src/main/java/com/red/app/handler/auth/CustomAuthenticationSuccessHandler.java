@@ -1,9 +1,12 @@
 package com.red.app.handler.auth;
 
 import com.red.model.User;
+import com.red.model.UserDetailCustom;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,14 +16,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Component
-public class CustomAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
+//@Component
+public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     @Override
     protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException {
         String targetUrl = determineTargetUrl(authentication);
-        authenticated((User) authentication.getDetails());
+
+        UserDetailCustom userDetails = (UserDetailCustom) authentication.getPrincipal();
+
+        authenticated(userDetails.getUserDetails());
 
         if (response.isCommitted()) {
             logger.info("Can't redirect");
@@ -31,6 +37,8 @@ public class CustomAuthenticationSuccessHandler extends SavedRequestAwareAuthent
     }
 
     protected String determineTargetUrl(Authentication authentication) {
+        logger.info("---------------------------<MRT-------------------");
+
         String url = "";
 
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
@@ -46,7 +54,7 @@ public class CustomAuthenticationSuccessHandler extends SavedRequestAwareAuthent
         } else if (isUser(roles)) {
             url = "/";
         } else {
-            url = "/accessDenied";
+            url = "/";
         }
 
         return url;
@@ -63,5 +71,7 @@ public class CustomAuthenticationSuccessHandler extends SavedRequestAwareAuthent
     protected void authenticated(User users)
     {
         //
+        logger.info("---------------------------<MRT-------------------");
+        logger.info("---------------------------Sử lý khi đăng nhập thành công-------------------");
     }
 }
