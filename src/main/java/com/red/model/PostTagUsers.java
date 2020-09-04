@@ -15,11 +15,11 @@ public class PostTagUsers {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User userId;
 
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", referencedColumnName = "id", nullable = false)
     private Post postId;
 

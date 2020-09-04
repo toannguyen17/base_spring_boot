@@ -12,11 +12,11 @@ public class CommentReplyImage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "comment_reply_id", referencedColumnName = "id", nullable = false)
     private CommentReply commentReplyId;
 
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "media_id", referencedColumnName = "id", nullable = false)
     private Media mediaId;
 

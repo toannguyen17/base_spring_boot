@@ -12,11 +12,11 @@ public class Avatar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.DETACH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "avatar_id", referencedColumnName = "id")
     private AvatarImage avatarId;
 
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false, unique = true)
     private User userId;
 

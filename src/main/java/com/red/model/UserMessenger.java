@@ -15,11 +15,11 @@ public class UserMessenger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User userId;
 
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "contact_id", referencedColumnName = "id", nullable = false)
     private Contact contactId;
 
