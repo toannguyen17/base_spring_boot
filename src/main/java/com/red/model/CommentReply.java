@@ -33,7 +33,7 @@ public class CommentReply {
 
     @Column(name = "updated_at", nullable = false)
     @UpdateTimestamp
-    private LocalDateTime updateddAt;
+    private LocalDateTime updatedAt;
 
     public CommentReply(){}
 }

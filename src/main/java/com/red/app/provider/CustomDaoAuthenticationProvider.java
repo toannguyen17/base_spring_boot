@@ -70,7 +70,7 @@ public class CustomDaoAuthenticationProvider extends DaoAuthenticationProvider {
             if(user.isPresent()){
                 Locale locale = RequestContextUtils.getLocale(request);
                 System.out.println(locale);
-                LocalDateTime lastAttempts = user.get().getUpdateddAt();
+                LocalDateTime lastAttempts = user.get().getUpdatedAt();
                 String last = lastAttempts.toString();
                 String name = authentication.getName();
                 error = messageSource.getMessage("auth.lockByUser", new Object[]{name, last}, locale);// The account or password is incorrect.

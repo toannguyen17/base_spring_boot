@@ -34,7 +34,7 @@ public class Comment {
 
     @Column(name = "updated_at", nullable = false)
     @UpdateTimestamp
-    private LocalDateTime updateddAt;
+    private LocalDateTime updatedAt;
 
     @Transient
 //    @OneToMany(targetEntity=CommentImage.class, mappedBy = "id", fetch = FetchType.EAGER)

@@ -23,8 +23,9 @@ public class CommentReaction {
     @JoinColumn(name = "comment_id", referencedColumnName = "id", nullable = false)
     private Comment commentId;
 
-    @Column(length = 15)
-    private String type;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 15, nullable = false)
+    private ReactionType type;
 
     @Column(name = "created_at", nullable = false)
     @CreationTimestamp
@@ -32,7 +33,7 @@ public class CommentReaction {
 
     @Column(name = "updated_at", nullable = false)
     @UpdateTimestamp
-    private LocalDateTime updateddAt;
+    private LocalDateTime updatedAt;
 
     public CommentReaction(){}
 }

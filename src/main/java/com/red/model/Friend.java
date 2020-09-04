@@ -33,7 +33,7 @@ public class Friend {
 
     @Column(name = "updated_at", nullable = false)
     @UpdateTimestamp
-    private LocalDateTime updateddAt;
+    private LocalDateTime updatedAt;
 
     public Friend(){
     }

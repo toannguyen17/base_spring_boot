@@ -6,12 +6,11 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "user_messengers")
 @Data
-public class Post {
+public class UserMessenger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,9 +19,9 @@ public class Post {
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User userId;
 
-    @Lob
-    @Column(name = "text")
-    private String text;
+    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "contact_id", referencedColumnName = "id", nullable = false)
+    private Contact contactId;
 
     @Column(name = "created_at", nullable = false)
     @CreationTimestamp
@@ -32,11 +31,5 @@ public class Post {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @Transient
-//    @OneToMany(targetEntity=PostImage.class, mappedBy = "id", fetch = FetchType.EAGER)
-    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
-    private List<PostImage> postImages;
-
-    public Post(){
-    }
+    public UserMessenger(){}
 }

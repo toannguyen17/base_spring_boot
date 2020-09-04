@@ -37,7 +37,7 @@ public class User {
 
 	@Column(name = "updated_at", nullable = false)
 	@UpdateTimestamp
-	private LocalDateTime updateddAt;
+	private LocalDateTime updatedAt;
 
 	private boolean enabled;
 
@@ -105,12 +105,12 @@ public class User {
 		this.createdAt = createdAt;
 	}
 
-	public LocalDateTime getUpdateddAt() {
-		return updateddAt;
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
 	}
 
-	public void setUpdateddAt(LocalDateTime updateddAt) {
-		this.updateddAt = updateddAt;
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	public boolean isEnabled() {
