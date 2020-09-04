@@ -6,13 +6,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
+public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -40,16 +39,12 @@ public class User implements Serializable {
 	@UpdateTimestamp
 	private LocalDateTime updateddAt;
 
-	@Column(name = "enabled")
 	private boolean enabled;
 
-	@Column(name = "accountNonExpired")
 	private boolean accountNonExpired;
 
-	@Column(name = "credentialsNonExpired")
 	private boolean credentialsNonExpired;
 
-	@Column(name = "accountNonLocked")
 	private boolean accountNonLocked;
 
 	@JsonIgnore
