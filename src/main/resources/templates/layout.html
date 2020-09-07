@@ -4,7 +4,7 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-	<th:block th:fragment="head_type">
+	<th:block layout:fragment="head_type">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,19 +17,26 @@
 
 	<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">RedT</title>
 
-	<th:block th:fragment="bootstrap">
+	<th:block layout:fragment="bootstrap">
 		<link rel="shortcut icon" href="/favicon.png" />
 		<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
 		<script th:src="@{/assets/lib/popper-1.16.1/popper.min.js}"></script>
-		<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!--		<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
 
-		<script th:src="@{//cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js}"></script>
+<!--		<script th:src="@{//cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js}"></script>-->
 
-		<script th:src="@{//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js}"></script>
-		<link type="text/css" rel="stylesheet" th:href="@{//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css}">
+<!--		<script th:src="@{//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js}"></script>-->
+<!--		<link type="text/css" rel="stylesheet" th:href="@{//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css}">-->
 		
-		<link th:href="@{//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=vi}" rel="stylesheet" type="text/css">
-		<link type="text/css" rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+<!--		<link th:href="@{//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=vi}" rel="stylesheet" type="text/css">-->
+<!--		<link type="text/css" rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">-->
+
+		<!-- Vendors Min CSS -->
+		<link rel="stylesheet" th:href="@{/assets/css/vendors.min.css}">
+		<!-- Style CSS -->
+		<link rel="stylesheet" th:href="@{/assets/css/style.css}">
+		<!-- Responsive CSS -->
+		<link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
 	</th:block>
 
 	<th:block layout:fragment="head"></th:block>
@@ -87,5 +94,20 @@
 		<th:block layout:fragment="content"></th:block>
 	</main>
 </div>
+
+<th:block layout:fragment="footer_scripts">
+	<!-- Vendors Min JS -->
+	<script th:src="@{/assets/js/vendors.min.js}"></script>
+
+	<!-- jvectormap Min JS -->
+	<script th:src="@{/assets/js/jvectormap-1.2.2.min.js}"></script>
+	<!-- jvectormap World Mill JS -->
+	<script th:src="@{/assets/js/jvectormap-world-mill-en.js}"></script>
+
+	<!-- When the url is pages/maps then load the library -->
+
+	<!-- Custom JS -->
+	<script th:src="@{/assets/js/custom.js}"></script>
+</th:block>
 </body>
 </html>

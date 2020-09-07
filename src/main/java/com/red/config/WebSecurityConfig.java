@@ -81,11 +81,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/questionTypes/admin", "/users/adminList", "/users/addAdminForm")
-                .hasRole("ADMIN")
-                .and()
-            .authorizeRequests()
-                .antMatchers("/wallPage", "/questions/add", "/questionTypes", "/profile/*", "/answers/**")
+                .antMatchers("/profile/**", "/api/profile/**")
                 .hasAnyRole("ADMIN", "USER")
                 .and()
             .authorizeRequests()
@@ -93,7 +89,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin()
                 .loginPage("/login").usernameParameter("email").passwordParameter("password").permitAll()
-//                .loginProcessingUrl("/login")
                 .failureForwardUrl("/login")
                 .successHandler(authenticationSuccessHandler())
                 .and()
@@ -109,21 +104,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultsDisabled()
                 .frameOptions()
                 .sameOrigin()
-                .cacheControl();
+                .cacheControl().disable();
         http.csrf();
 
-        http
-            .cors()
-                .and()
-            .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/user/info", "/api/foos/**")
-                .hasAuthority("SCOPE_read")
-                .antMatchers(HttpMethod.POST, "/api/foos")
-                .hasAuthority("SCOPE_write")
-                .anyRequest()
-                .authenticated()
-                .and()
-            .oauth2ResourceServer()
-            .jwt();
+//        http
+//            .cors()
+//                .and()
+//            .authorizeRequests()
+//                .antMatchers(HttpMethod.GET, "/user/info")
+//                .hasAuthority("SCOPE_read")
+//                .antMatchers(HttpMethod.POST, "/api/foos")
+//                .hasAuthority("SCOPE_write")
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//            .oauth2ResourceServer()
+//            .jwt();
     }
 }

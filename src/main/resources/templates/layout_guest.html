@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<th:block layout:replace="layout.html::head_type"></th:block>
+
+	<meta name="_csrf" th:content="${_csrf.token}"/>
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+	<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">RedT</title>
+
+	<th:block layout:replace="layout.html::bootstrap"></th:block>
+
+	<th:block layout:fragment="head"></th:block>
+</head>
+<body>
+<th:block layout:fragment="content"></th:block>
+<th:block layout:replace="layout.html::footer_scripts">
+</th:block>
+</body>
+</html>

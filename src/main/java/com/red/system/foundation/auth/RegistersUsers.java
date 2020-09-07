@@ -1,6 +1,8 @@
 package com.red.system.foundation.auth;
 
+import com.red.model.Role;
 import com.red.model.User;
+import com.red.services.role.RoleService;
 import com.red.services.user.UserService;
 import com.red.system.auth.form.FormRegister;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class RegistersUsers {
 	protected String redirectTo = "/";
@@ -23,6 +27,9 @@ public abstract class RegistersUsers {
 
 	@Autowired
 	private UserService service;
+
+	@Autowired
+	private RoleService roleService;
 
 	@GetMapping("register")
 	public String index(Model model){
@@ -74,7 +81,16 @@ public abstract class RegistersUsers {
 		users.setAccountNonExpired(true);
 		users.setCredentialsNonExpired(true);
 
+//		service.save(users);
+
+		Role role = roleService.findByName("ROLE_USER");
+		if (role != null){
+			List<Role> list = new ArrayList<>();
+			list.add(role);
+			users.setRoles(list);
+		}
 		service.save(users);
+
 		return users;
 	}
 

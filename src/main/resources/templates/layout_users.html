@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<th:block layout:replace="layout.html::head_type"></th:block>
+
+	<meta name="_csrf" th:content="${_csrf.token}"/>
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+	<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">RedT</title>
+
+	<th:block layout:replace="layout.html::bootstrap"></th:block>
+
+	<th:block layout:fragment="head"></th:block>
+</head>
+<body>
+<!-- Top Navbar -->
+<!-- Top Navbar Area -->
+<nav class="navbar top-navbar navbar-expand pl-3 pr-3 bg-white">
+	<div class="container-xl collapse navbar-collapse justify-content-start" id="navbarSupportContent">
+		<a class="navbar-brand mt-2 mb-2" th:href="@{/}">
+			Home
+		</a>
+
+		<form class="nav-search-form d-none d-md-block">
+			<label><i class='bx bx-search'></i></label>
+			<input type="text" class="form-control" placeholder="Search here...">
+		</form>
+
+		<ul class="ml-auto navbar-nav right-nav align-items-center">
+			<li class="nav-item">
+				<a class="nav-link bx-fullscreen-btn" id="fullscreen-button">
+					<i class="bx bx-fullscreen"></i>
+				</a>
+			</li>
+
+			<li class="nav-item dropdown language-switch-nav-item">
+				<div class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="assets/img/us-flag.jpg" alt="image">
+					<span>English <i class='bx bx-chevron-down'></i></span>
+				</div>
+
+				<div class="dropdown-menu">
+					<a th:href="@{?lang=en}" class="dropdown-item d-flex justify-content-between align-items-center">
+						<span>English</span>
+						<img th:src="@{/assets/img/us-flag.jpg}" alt="flag">
+					</a>
+					<a th:href="@{?lang=vi}" class="dropdown-item d-flex justify-content-between align-items-center">
+						<span>Tiếng việt</span>
+						<img th:src="@{assets/img/vi-flag.png}" alt="flag">
+					</a>
+				</div>
+			</li>
+
+			<li class="nav-item message-box dropdown">
+				<a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<div class="message-btn">
+						<i class='bx bx-envelope'></i>
+						<span class="badge badge-primary">4</span>
+					</div>
+				</a>
+
+				<div class="dropdown-menu">
+					<div class="dropdown-header d-flex justify-content-between align-items-center">
+						<span class="title d-inline-block">4 New Message</span>
+						<span class="clear-all-btn d-inline-block">Clear All</span>
+					</div>
+
+					<div class="dropdown-body">
+						<a href="#" class="dropdown-item d-flex align-items-center">
+							<div class="figure">
+								<img src="assets/img/user1.jpg" class="rounded-circle" alt="image">
+							</div>
+
+							<div class="content d-flex justify-content-between align-items-center">
+								<div class="text">
+									<span class="d-block">Sarah Taylor</span>
+									<p class="sub-text mb-0">UX/UI design</p>
+								</div>
+								<p class="time-text mb-0">2 sec ago</p>
+							</div>
+						</a>
+
+						<a href="#" class="dropdown-item d-flex align-items-center">
+							<div class="figure">
+								<img src="assets/img/user2.jpg" class="rounded-circle" alt="image">
+							</div>
+
+							<div class="content d-flex justify-content-between align-items-center">
+								<div class="text">
+									<span class="d-block">Lucy Eva</span>
+									<p class="sub-text mb-0">Web developers</p>
+								</div>
+								<p class="time-text mb-0">5 sec ago</p>
+							</div>
+						</a>
+
+						<a href="#" class="dropdown-item d-flex align-items-center">
+							<div class="figure">
+								<img src="assets/img/user3.jpg" class="rounded-circle" alt="image">
+							</div>
+
+							<div class="content d-flex justify-content-between align-items-center">
+								<div class="text">
+									<span class="d-block">James Anderson</span>
+									<p class="sub-text mb-0">Content whitter</p>
+								</div>
+								<p class="time-text mb-0">3 min ago</p>
+							</div>
+						</a>
+
+						<a href="#" class="dropdown-item d-flex align-items-center">
+							<div class="figure">
+								<img src="assets/img/user4.jpg" class="rounded-circle" alt="image">
+							</div>
+
+							<div class="content d-flex justify-content-between align-items-center">
+								<div class="text">
+									<span class="d-block">Steven Smith</span>
+									<p class="sub-text mb-0">Digital marketing</p>
+								</div>
+								<p class="time-text mb-0">7 min ago</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="dropdown-footer">
+						<a href="#" class="dropdown-item">View All</a>
+					</div>
+				</div>
+			</li>
+
+			<li class="nav-item notification-box dropdown">
+				<a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<div class="notification-btn">
+						<i class='bx bx-bell'></i>
+						<span class="badge badge-secondary">5</span>
+					</div>
+				</a>
+
+				<div class="dropdown-menu">
+					<div class="dropdown-header d-flex justify-content-between align-items-center">
+						<span class="title d-inline-block">6 New Notifications</span>
+						<span class="mark-all-btn d-inline-block">Mark all as read</span>
+					</div>
+
+					<div class="dropdown-body">
+						<a href="#" class="dropdown-item d-flex align-items-center">
+							<div class="icon">
+								<i class='bx bx-message-rounded-dots'></i>
+							</div>
+							<div class="content">
+								<span class="d-block">Just sent a new message!</span>
+								<p class="sub-text mb-0">2 sec ago</p>
+							</div>
+						</a>
+
+						<a href="#" class="dropdown-item d-flex align-items-center">
+							<div class="icon">
+								<i class='bx bx-user'></i>
+							</div>
+							<div class="content">
+								<span class="d-block">New customer registered</span>
+								<p class="sub-text mb-0">5 sec ago</p>
+							</div>
+						</a>
+
+						<a href="#" class="dropdown-item d-flex align-items-center">
+							<div class="icon">
+								<i class='bx bx-layer'></i>
+							</div>
+							<div class="content">
+								<span class="d-block">Apps are ready for update</span>
+								<p class="sub-text mb-0">3 min ago</p>
+							</div>
+						</a>
+
+						<a href="#" class="dropdown-item d-flex align-items-center">
+							<div class="icon">
+								<i class='bx bx-hourglass'></i>
+							</div>
+							<div class="content">
+								<span class="d-block">Your item is shipped</span>
+								<p class="sub-text mb-0">7 min ago</p>
+							</div>
+						</a>
+
+						<a href="#" class="dropdown-item d-flex align-items-center">
+							<div class="icon">
+								<i class='bx bx-comment-dots'></i>
+							</div>
+							<div class="content">
+								<span class="d-block">Steven commented on your post</span>
+								<p class="sub-text mb-0">1 sec ago</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="dropdown-footer">
+						<a href="#" class="dropdown-item">View All</a>
+					</div>
+				</div>
+			</li>
+
+			<li class="nav-item dropdown profile-nav-item">
+				<a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<div class="menu-profile">
+						<span class="name">Hi! Andro</span>
+						<img src="assets/img/user1.jpg" class="rounded-circle" alt="image">
+					</div>
+				</a>
+
+				<div class="dropdown-menu">
+					<div class="dropdown-header d-flex flex-column align-items-center">
+						<div class="figure mb-3">
+							<img src="assets/img/user1.jpg" class="rounded-circle" alt="image">
+						</div>
+						<div class="info text-center">
+							<span class="name">Andro Smith</span>
+							<p class="mb-3 email">hello@androsmith.com</p>
+						</div>
+					</div>
+
+					<div class="dropdown-body">
+						<ul class="profile-nav p-0 pt-3">
+							<li class="nav-item">
+								<a th:href="@{/profile}" class="nav-link">
+									<i class='bx bx-user'></i> <span>Profile</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/messenger}" class="nav-link">
+									<i class='bx bx-envelope'></i> <span>Messenger</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#" class="nav-link">
+									<i class='bx bx-edit-alt'></i> <span>Edit Profile</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#" class="nav-link">
+									<i class='bx bx-cog'></i> <span>Settings</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="dropdown-footer">
+						<ul class="profile-nav">
+							<li class="nav-item">
+								<a th:href="@{/logout}" class="nav-link">
+									<i class='bx bx-log-out'></i> <span>Logout</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</nav>
+<!-- End Top Navbar Area -->
+
+<section class="container-xl mt-5">
+	<th:block layout:fragment="content"></th:block>
+</section>
+<th:block layout:replace="layout.html::footer_scripts">
+</th:block>
+</body>
+</html>
