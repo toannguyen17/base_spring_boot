@@ -9,5 +9,6 @@ public class RegisterController extends RegistersUsers {
     protected void registered(User user)
     {
         //
+
     }
 }
